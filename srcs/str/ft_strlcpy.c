@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 06:42:03 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/12 02:24:58 by gcros            ###   ########.fr       */
+/*   Created: 2023/11/06 17:53:31 by gcros             #+#    #+#             */
+/*   Updated: 2023/12/12 01:33:29 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "str.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
-# endif
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	i;
 
-# ifndef FD_SIZE
-#  define FD_SIZE 1024
-# endif
-
-# ifndef EOL
-#  define EOL '\n'
-# endif
-
-# ifndef EOS
-#  define EOS '\0'
-# endif
-
-# include <stdio.h>
-# include <stdlib.h>
-# include <stddef.h>
-# include <unistd.h>
-
-# include "str.h"
-# include "mem.h"
-
-char	*get_next_line(int fd);
-
-#endif
+	i = 0;
+	if (size == 0)
+		return (ft_strlen(src));
+	while (i < size - 1 && src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (ft_strlen(src));
+}

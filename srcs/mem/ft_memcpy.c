@@ -1,42 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 06:42:03 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/12 02:24:58 by gcros            ###   ########.fr       */
+/*   Created: 2023/11/06 17:36:55 by gcros             #+#    #+#             */
+/*   Updated: 2023/12/12 01:49:05 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "mem.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
-# endif
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	size_t	i;
 
-# ifndef FD_SIZE
-#  define FD_SIZE 1024
-# endif
-
-# ifndef EOL
-#  define EOL '\n'
-# endif
-
-# ifndef EOS
-#  define EOS '\0'
-# endif
-
-# include <stdio.h>
-# include <stdlib.h>
-# include <stddef.h>
-# include <unistd.h>
-
-# include "str.h"
-# include "mem.h"
-
-char	*get_next_line(int fd);
-
-#endif
+	i = 0;
+	if (!src && !dest)
+		return (dest);
+	while (i < n)
+	{
+		((char *)dest)[i] = ((char *)src)[i];
+		i++;
+	}
+	return (dest);
+}

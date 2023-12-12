@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 06:42:03 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/12 02:24:58 by gcros            ###   ########.fr       */
+/*   Created: 2023/11/10 02:57:00 by gcros             #+#    #+#             */
+/*   Updated: 2023/12/12 01:33:43 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "str.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
-# endif
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	char const	*str;
+	char		*c2;
 
-# ifndef FD_SIZE
-#  define FD_SIZE 1024
-# endif
-
-# ifndef EOL
-#  define EOL '\n'
-# endif
-
-# ifndef EOS
-#  define EOS '\0'
-# endif
-
-# include <stdio.h>
-# include <stdlib.h>
-# include <stddef.h>
-# include <unistd.h>
-
-# include "str.h"
-# include "mem.h"
-
-char	*get_next_line(int fd);
-
-#endif
+	str = s1;
+	if (!*s1 || !*set)
+		return (ft_strdup(s1));
+	while (ft_strchr(set, *str) && *str)
+		str++;
+	c2 = ft_strchr(str, '\0');
+	while (str < c2 && ft_strchr(set, *(c2 - 1)))
+		c2--;
+	return (ft_substr(str, 0, c2 - str));
+}

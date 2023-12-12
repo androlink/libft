@@ -1,42 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   char.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 06:42:03 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/12 02:24:58 by gcros            ###   ########.fr       */
+/*   Created: 2023/12/12 01:27:10 by gcros             #+#    #+#             */
+/*   Updated: 2023/12/12 01:40:17 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef CHAR_H
+# define CHAR_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
-# endif
-
-# ifndef FD_SIZE
-#  define FD_SIZE 1024
-# endif
-
-# ifndef EOL
-#  define EOL '\n'
-# endif
-
-# ifndef EOS
-#  define EOS '\0'
-# endif
-
-# include <stdio.h>
-# include <stdlib.h>
-# include <stddef.h>
-# include <unistd.h>
-
-# include "str.h"
-# include "mem.h"
-
-char	*get_next_line(int fd);
+int		ft_isalpha(int c);
+int		ft_isdigit(int c);
+int		ft_isalnum(int c);
+int		ft_isascii(int c);
+int		ft_isprint(int c);
+int		ft_toupper(int c);
+int		ft_tolower(int c);
 
 #endif
