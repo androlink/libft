@@ -6,11 +6,11 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 01:32:29 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/06 22:37:26 by gcros            ###   ########.fr       */
+/*   Updated: 2023/12/14 06:27:29 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 size_t	ft_printchar(int c)
 {

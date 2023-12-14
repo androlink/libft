@@ -6,13 +6,13 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 05:09:32 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/12 05:17:27 by gcros            ###   ########.fr       */
+/*   Updated: 2023/12/14 05:20:01 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mem.h"
 
-void	nfree(void **ptr)
+void	ft_nfree(void **ptr)
 {
 	free(*ptr);
 	*ptr = NULL;

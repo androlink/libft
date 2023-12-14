@@ -25,7 +25,11 @@ LSTFILES	=	ft_lstadd_back.c	\
 				ft_lstlast.c		\
 				ft_lstmap.c			\
 				ft_lstnew.c			\
-				ft_lstsize.c
+				ft_lstsize.c		\
+				ft_lstpop.c			\
+				ft_lstpush.c		\
+				ft_lstshift.c		\
+				ft_lstunshift.c
 
 CHARDIR		=	char
 CHARFILES	=	ft_tolower.c		\

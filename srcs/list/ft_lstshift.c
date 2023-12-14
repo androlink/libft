@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printstr.c                                      :+:      :+:    :+:   */
+/*   ft_lstshift.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/19 02:56:05 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/14 06:27:46 by gcros            ###   ########.fr       */
+/*   Created: 2023/12/14 05:29:29 by gcros             #+#    #+#             */
+/*   Updated: 2023/12/14 07:01:21 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "list.h"
 
-size_t	ft_printstr(char *str)
+void	*ft_lstshift(t_list **lst)
 {
-	size_t	i;
+	t_list	*tmp;
+	t_list	*last;
+	void	*data;
 
-	if (!str)
-		return (write(1, "(null)", 6));
-	i = 0;
-	while (str[i])
-		i++;
-	return (write(1, str, i));
+	if (*lst == NULL)
+		return (NULL);
+	tmp = *lst;
+	if (tmp->next == NULL)
+	{
+		last = *lst;
+		*lst = NULL;
+	}
+	else
+	{
+		while (tmp && tmp->next && tmp->next->next)
+			tmp = tmp->next;
+		last = tmp->next;
+		tmp->next = NULL;
+	}
+	data = last->content;
+	free(last);
+	return (data);
 }

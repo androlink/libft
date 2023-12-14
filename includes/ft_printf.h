@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printstr.c                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/19 02:56:05 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/14 06:27:46 by gcros            ###   ########.fr       */
+/*   Created: 2023/11/18 19:39:41 by gcros             #+#    #+#             */
+/*   Updated: 2023/12/14 06:27:17 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-size_t	ft_printstr(char *str)
-{
-	size_t	i;
+# include <stdarg.h>
+# include <stddef.h>
+# include <unistd.h>
 
-	if (!str)
-		return (write(1, "(null)", 6));
-	i = 0;
-	while (str[i])
-		i++;
-	return (write(1, str, i));
-}
+int		ft_printf(const char *str, ...);
+size_t	ft_printchar(int c);
+size_t	ft_printstr(char *str);
+size_t	ft_printnbr(long long lnbr);
+size_t	ft_printxnbr(unsigned long long lnbr, char *xset);
+size_t	ft_printptr(unsigned long long llnbr);
+
+#endif
