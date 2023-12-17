@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strisnum.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/18 19:39:41 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/06 19:10:35 by gcros            ###   ########.fr       */
+/*   Created: 2023/12/17 20:52:06 by gcros             #+#    #+#             */
+/*   Updated: 2023/12/17 22:34:26 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "str.h"
+#include "num.h"
 
-# include <stdarg.h>
-# include <stddef.h>
-# include <unistd.h>
 
-int		ft_printf(const char *str, ...);
-size_t	ft_printchar(int c);
-size_t	ft_printstr(char *str);
-size_t	ft_printnbr(long long lnbr);
-size_t	ft_printxnbr(unsigned long long lnbr, char *xset);
-size_t	ft_printptr(unsigned long long llnbr);
-
-#endif
+int	ft_strisnumber(const char *s)
+{
+	if (*s == '-' || *s == '+')
+		s++;
+	while (*s)
+	{
+		if (!ft_isdigit(*s))
+			return (0);
+		s++;
+	}
+	return (1);
+}

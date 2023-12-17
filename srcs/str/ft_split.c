@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 06:25:45 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/12 01:33:09 by gcros            ###   ########.fr       */
+/*   Updated: 2023/12/17 22:16:31 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,22 @@ static char	*ft_getnextword(char const *str, char sep)
 	return (buf);
 }
 
-static void	ft_freebuf(char ***buf)
+void	ft_strsfree(char **str)
 {
 	size_t	i;
 
 	i = 0;
-	while (buf[0][i])
+	while (str[i])
 	{
-		free(buf[0][i]);
+		free(str[i]);
 		i++;
 	}
-	free(buf[0]);
+	free(str);
+}
+
+static void	ft_freebuf(char ***buf)
+{
+	ft_strsfree(buf[0]);
 	buf[0] = NULL;
 }
 

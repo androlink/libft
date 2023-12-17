@@ -6,11 +6,11 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 15:39:17 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/12 01:56:51 by gcros            ###   ########.fr       */
+/*   Updated: 2023/12/17 19:51:13 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "str.h"
+#include "num.h"
 
 int	ft_atoi(const char *nptr)
 {

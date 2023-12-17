@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 01:29:19 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/12 02:11:02 by gcros            ###   ########.fr       */
+/*   Updated: 2023/12/17 22:34:10 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define STR_H
 
 # include <stdlib.h>
-# include <limits.h>
 # include "char.h"
 
 size_t	ft_strlen(const char *s);
@@ -31,8 +30,9 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	**ft_split(char const *s, char c);
-int		ft_atoi(const char *nptr);
 char	*ft_itoa(int n);
 void	ft_strncpy(char *dest, const char *src, size_t n);
+int		ft_strisnumber(const char *s);
+void	ft_strsfree(char **str);
 
 #endif

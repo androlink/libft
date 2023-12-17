@@ -56,8 +56,8 @@ STRFILES	=	ft_split.c			\
 				ft_strrchr.c		\
 				ft_strtrim.c		\
 				ft_substr.c			\
-				ft_atoi.c			\
-				ft_itoa.c
+				ft_itoa.c			\
+				ft_strisnum.c
 
 MEMDIR		=	mem
 MEMFILES	=	ft_bzero.c			\
@@ -86,12 +86,17 @@ FTPRINTFFILES	=	ft_printchar.c	\
 					ft_printstr.c	\
 					ft_printxnbr.c
 
+NUMDIR			=	num
+NUMFILES		=	ft_atoi.c		\
+					ft_atol.c
+
 SFILES	=	${addprefix $(LSTDIR)/, $(LSTFILES)}		\
 			${addprefix $(CHARDIR)/, $(CHARFILES)}		\
 			${addprefix $(STRDIR)/, $(STRFILES)}		\
 			${addprefix $(MEMDIR)/, $(MEMFILES)}		\
 			${addprefix $(PUTDIR)/, $(PUTFILES)}		\
 			${addprefix $(GNLDIR)/, $(GNLFILES)}		\
+			${addprefix $(NUMDIR)/, $(NUMFILES)}		\
 			${addprefix $(FTPRINTFDIR)/, $(FTPRINTFFILES)}
 
 SRCS	=	$(SFILES:%=$(SDIR)/%)
