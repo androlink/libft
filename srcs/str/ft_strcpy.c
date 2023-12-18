@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 17:53:31 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/18 10:45:44 by gcros            ###   ########.fr       */
+/*   Updated: 2023/12/18 12:37:28 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_strncpy(char *dest, const char *src, size_t n)
 char	*ft_stpcpy(char *dest, const char *src)
 {
 	char	*p;
-	
+
 	p = ft_mempcpy(dest, src, ft_strlen(src));
 	*p = '\0';
 	return (p);

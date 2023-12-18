@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 10:10:08 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/18 11:32:42 by gcros            ###   ########.fr       */
+/*   Updated: 2023/12/18 12:37:10 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strsjoin(char **strs, char sep)
 	char	*p;
 	size_t	i;
 	size_t	count;
-	
+
 	i = 0;
 	count = 0;
 	while (strs[i])

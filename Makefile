@@ -104,7 +104,8 @@ SRCS	=	$(SFILES:%=$(SDIR)/%)
 OFILES	=	$(SFILES:%.c=%.o)
 OBJS	=	$(OFILES:%=$(BDIR)/%)
 
-DEPS		= $(SFILES:%.c=$(BDIR)/%.d)
+DEPSDIR		= build
+DEPS		= $(SFILES:%.c=$(DEPSDIR)/%.d)
 
 all		:	$(NAME)
 

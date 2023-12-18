@@ -6,13 +6,12 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 20:52:06 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/17 22:34:26 by gcros            ###   ########.fr       */
+/*   Updated: 2023/12/18 12:36:52 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "str.h"
 #include "num.h"
-
 
 int	ft_strisnumber(const char *s)
 {
