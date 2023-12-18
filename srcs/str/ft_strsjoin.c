@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strsjoin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 17:53:31 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/12 01:33:29 by gcros            ###   ########.fr       */
+/*   Created: 2023/12/18 10:10:08 by gcros             #+#    #+#             */
+/*   Updated: 2023/12/18 11:32:42 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "str.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	*ft_strsjoin(char **strs, char sep)
 {
+	char	*str;
+	char	*p;
 	size_t	i;
-
+	size_t	count;
+	
 	i = 0;
-	if (size == 0)
-		return (ft_strlen(src));
-	while (i < size - 1 && src[i])
+	count = 0;
+	while (strs[i])
+		count += ft_strlen(strs[i++]);
+	if (count + i == 0)
+		return (NULL);
+	str = malloc(count + i);
+	if (!str)
+		return (NULL);
+	i = 0;
+	p = str;
+	while (strs[i])
 	{
-		dst[i] = src[i];
-		i++;
+		p = ft_stpcpy(p, strs[i++]);
+		*(p++) = sep;
 	}
-	dst[i] = '\0';
-	return (ft_strlen(src));
+	*(p - 1) = '\0';
+	return (str);
 }

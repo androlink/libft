@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 01:29:19 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/17 22:34:10 by gcros            ###   ########.fr       */
+/*   Updated: 2023/12/18 10:33:51 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include "char.h"
+# include "mem.h"
 
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
@@ -32,7 +33,10 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 void	ft_strncpy(char *dest, const char *src, size_t n);
+char	*ft_stpcpy(char *dest, const char *src);
+char	*ft_stpcpy(char *dest, const char *src);
 int		ft_strisnumber(const char *s);
 void	ft_strsfree(char **str);
+char	*ft_strsjoin(char **strs, char sep);
 
 #endif

@@ -42,13 +42,13 @@ CHARFILES	=	ft_tolower.c		\
 
 STRDIR		=	str
 STRFILES	=	ft_split.c			\
+				ft_strsjoin.c		\
 				ft_strchr.c			\
 				ft_strdup.c			\
 				ft_striteri.c		\
 				ft_strjoin.c		\
 				ft_strlcat.c		\
-				ft_strlcpy.c		\
-				ft_strncpy.c		\
+				ft_strcpy.c			\
 				ft_strlen.c			\
 				ft_strmapi.c		\
 				ft_strncmp.c		\

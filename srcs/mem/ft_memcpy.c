@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 17:36:55 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/12 01:49:05 by gcros            ###   ########.fr       */
+/*   Updated: 2023/12/18 10:47:29 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,9 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 		i++;
 	}
 	return (dest);
+}
+
+void	*ft_mempcpy(void *dest, const void *src, size_t n)
+{
+	return (ft_memcpy(dest, src, n) + n);
 }
