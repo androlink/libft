@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 06:42:03 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/12 02:24:58 by gcros            ###   ########.fr       */
+/*   Updated: 2023/12/21 07:48:56 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,13 @@
 
 # include "str.h"
 # include "mem.h"
+
+typedef struct s_buffer
+{
+	size_t	cursor;
+	size_t	end;
+	char	buf[BUFFER_SIZE + 1];
+}	t_buffer;
 
 char	*get_next_line(int fd);
 

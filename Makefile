@@ -127,4 +127,7 @@ clean	:
 re		:	fclean
 	$(MAKE) all
 
-.PHONY	:	all	fclean	clean	re
+debug	:
+	$(MAKE) re CFLAGS="-g3"
+
+.PHONY	:	all	fclean	clean	re	debug

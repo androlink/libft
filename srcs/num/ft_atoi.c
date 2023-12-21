@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 15:39:17 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/17 19:51:13 by gcros            ###   ########.fr       */
+/*   Updated: 2023/12/20 19:34:01 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_atoi(const char *nptr)
 {
 	int			s;
-	long		res;
+	int			res;
 	const char	*str;
 
 	str = nptr;
@@ -29,11 +29,9 @@ int	ft_atoi(const char *nptr)
 		str++;
 	while (ft_isdigit(*str))
 	{
-		if (res > LONG_MAX / 10)
+		if ((res * 10 + (*str - '0') - (s == -1)) < res)
 			return (-(s == 1));
 		res *= 10;
-		if (res > LONG_MAX - (*str - '0'))
-			return (-(s == 1));
 		res += *str - '0';
 		str++;
 	}
