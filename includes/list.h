@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 00:21:20 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/14 05:19:36 by gcros            ###   ########.fr       */
+/*   Updated: 2023/12/21 23:47:01 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 void	*ft_lstpop(t_list **lst);
-void	ft_lstpush(t_list **lst, void *data);
+int	ft_lstpush(t_list **lst, void *data);
 void	*ft_lstshift(t_list **lst);
-void	ft_lstunshift(t_list **lst, void *data);
+int		ft_lstunshift(t_list **lst, void *data);
 
 #endif
