@@ -1,80 +1,112 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 06:55:45 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/21 08:15:54 by gcros            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "get_next_line.h"
 
-static int	is_empty(t_buffer *buf)
-{
-	return (buf->cursor == buf->end);
-}
+#include <stdio.h>
 
-static void	ft_cleanbuf(char *buf)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < BUFFER_SIZE + 1 && buf[i] != EOL)
-		buf[i++] = '\0';
-	buf[i] = '\0';
-}
-
-int	ft_linetostr(char **dest, t_buffer *buf)
-{
-	char	*str;
-	size_t	i;
-	size_t	j;
-	size_t	start;
-
-	j = 0;
-	if (*dest)
-		j = ft_strlen(*dest);
-	start = buf->cursor;
-	i = start;
-	while (i < (buf->end) && buf->buf[i] != EOL)
-		++i;
-	str = malloc(j + (i - start) + (buf->buf[i] == EOL) + 1);
-	if (!str)
-		return (ft_nfree((void **)dest), -1);
-	ft_memcpy(str, *dest, j);
-	ft_memcpy(str + j, buf->buf + start, (buf->buf[i] == EOL) + i - start);
-	str[(i - start) + j + (buf->buf[i] == EOL)] = EOS;
-	free(*dest);
-	*dest = str;
-	buf->cursor = i + (buf->buf[i] == EOL);
-	return (buf->buf[i] == EOL);
-}
+static t_list	*get_buffer(int);
+static char	*get_line(t_list **);
+static void	clean_buf(t_list **);
+void	fill_buf(t_list *, char *);
 
 char	*get_next_line(int fd)
 {
-	static t_buffer	buf[FD_SIZE];
-	char			*str;
-	ssize_t			check;
+	static t_list	*buf[FD_SIZE];
+	char	        *str;
 
-	check = 2;
-	str = NULL;
-	while ((check == 0 || check == 2) && fd != -1 && fd < FD_SIZE)
-	{
-		if (check == 0 || is_empty(&buf[fd]))
-		{
-			check = read(fd, buf[fd].buf, BUFFER_SIZE);
-			if (check == 0)
-				break ;
-			if (check == -1)
-				return (free(str), NULL);
-			buf[fd].cursor = 0;
-			buf[fd].end = check;
-		}
-		check = ft_linetostr(&str, &buf[fd]);
-		//ft_cleanbuf(&buf[fd]);
-	}
+	if (fd < 0 || fd > FD_SIZE)
+		return (NULL);
+	if (buf[fd] == NULL)
+		buf[fd] = get_buffer(fd);
+	if (buf[fd] == NULL)
+		return (NULL);
+	str = get_line(&buf[fd]);
+	clean_buf(&buf[fd]);
 	return (str);
+}
+
+static char	*get_line(t_list **buf)
+{
+	char	*str;
+	size_t	i;
+
+	i = ft_buflen(*buf);
+	str = malloc(sizeof(char) * (i + 1));
+	if (str == NULL)
+		return (NULL);
+	fill_buf(*buf, str);
+	return (str);
+}
+
+void	fill_buf(t_list *buf, char *str)
+{
+	char	*p;
+	t_list	*tmp;
+
+	//printf("==>fill_buf<==\n");
+
+	p = ft_mempcpy(str, buf->content, ft_getlen(buf->content));
+	//printf("===fill_buf : %ld===\n", p - str);
+	tmp = buf->next;
+	while (tmp && tmp->next)
+	{
+		p = ft_mempcpy(p, tmp->content, BUFFER_SIZE);
+		//printf("===fill_buf : %ld===\n", p - str);
+		tmp = tmp->next;
+	}
+	if (tmp)
+	{
+		p = ft_mempcpy(p, tmp->content, ft_getlen(tmp->content));
+		//printf("===fill_buf : %ld===\n", p - str);
+	}
+	*p = '\0';
+}
+
+static void clean_buf(t_list **buf)
+{
+	char	*p;
+	t_list	*tmp;
+
+	if (*buf == NULL)
+		return ;
+	while ((*buf)->next)
+		free(ft_lstpop(buf));
+	tmp = *buf;
+	p = ft_strchr((char *)tmp->content, '\n');
+	if (p == NULL)
+	{
+		free(ft_lstpop(buf));
+		return ;
+	}
+	p = ft_strdup(p + (*p == '\n'));
+
+	free((*buf)->content);
+	(*buf)->content = p;
+}
+
+static t_list	*get_buffer(int fd)
+{
+	t_list	*buf;
+	char	*str;
+	ssize_t	check;
+
+	check = 1;
+	buf = NULL;
+	while (check == 1)
+	{
+		str = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+		if (str == NULL)
+			return (ft_lstclear(&buf, &free), NULL);
+		check = read(fd, str, BUFFER_SIZE);
+		if (check > 0)
+		{
+			str[check] = '\0';
+			check = ft_lstunshift(&buf, str);
+			if (check == 1 && ft_strchr(str, '\n') != NULL)
+				break ;
+		}
+	}
+	if (check == -1)
+		ft_lstclear(&buf, &free);
+	if (check <= 0)
+		free(str);
+	return (buf);
 }

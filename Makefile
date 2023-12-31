@@ -5,6 +5,7 @@ AR		=	ar -rcs
 RMF		=	rm -f
 RMD		=	rm -d
 
+GNLFLAGS = -D BUFFER_SIZE=1024
 CFLAGS	=	-Wall -Werror -Wextra
 DEPSFLAGS	=	-MMD -MP
 
@@ -76,7 +77,8 @@ PUTFILES	=	ft_putchar_fd.c		\
 				ft_putstr_fd.c
 
 GNLDIR		=	gnl
-GNLFILES	=	get_next_line.c
+GNLFILES	=	get_next_line.c     \
+                get_next_line_utils.c
 
 FTPRINTFDIR		=	ft_printf
 FTPRINTFFILES	=	ft_printchar.c	\
@@ -116,7 +118,7 @@ $(NAME)	:	$(OBJS)
 
 $(BDIR)/%.o		:	$(SDIR)/%.c
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(DEPSFLAGS) -c $< -o $@ -I $(HDIR)/
+	$(CC) $(CFLAGS) $(DEPSFLAGS) $(GNLFLAGS) -c $< -o $@ -I $(HDIR)/
 
 fclean	:	clean
 	$(RMF) $(NAME)
@@ -128,6 +130,6 @@ re		:	fclean
 	$(MAKE) all
 
 debug	:
-	$(MAKE) re CFLAGS="-g3"
+	$(MAKE) re CFLAGS="$(CFLAGS) -g3"
 
 .PHONY	:	all	fclean	clean	re	debug
