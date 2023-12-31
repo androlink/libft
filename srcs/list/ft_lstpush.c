@@ -20,5 +20,5 @@ int	ft_lstpush(t_list **lst, void *data)
 	if (new == NULL)
 		return (-1);
 	ft_lstadd_front(lst, new);
-	return (0);
+	return (1);
 }

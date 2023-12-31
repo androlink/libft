@@ -20,5 +20,5 @@ int	ft_lstunshift(t_list **lst, void *data)
 	if (new == NULL)
 		return (-1);
 	ft_lstadd_back(lst, new);
-	return (0);
+	return (1);
 }
