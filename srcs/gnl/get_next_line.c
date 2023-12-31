@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: androlink <androlink@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 06:55:45 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/21 08:15:54 by gcros            ###   ########.fr       */
+/*   Updated: 2023/12/31 17:30:13 by androlink        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,6 @@
 static int	is_empty(t_buffer *buf)
 {
 	return (buf->cursor == buf->end);
-}
-
-static void	ft_cleanbuf(char *buf)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < BUFFER_SIZE + 1 && buf[i] != EOL)
-		buf[i++] = '\0';
-	buf[i] = '\0';
 }
 
 int	ft_linetostr(char **dest, t_buffer *buf)
@@ -74,7 +64,6 @@ char	*get_next_line(int fd)
 			buf[fd].end = check;
 		}
 		check = ft_linetostr(&str, &buf[fd]);
-		//ft_cleanbuf(&buf[fd]);
 	}
 	return (str);
 }
