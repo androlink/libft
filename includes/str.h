@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   str.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: androlink <androlink@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 01:29:19 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/18 10:33:51 by gcros            ###   ########.fr       */
+/*   Updated: 2023/12/31 18:18:05 by androlink        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_strchr(const char *s, int c);
-char	*ft_strrchr(const char *s, int c);
+char	*ft_strchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_strdup(const char *s);
@@ -33,7 +33,6 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 void	ft_strncpy(char *dest, const char *src, size_t n);
-char	*ft_stpcpy(char *dest, const char *src);
 char	*ft_stpcpy(char *dest, const char *src);
 int		ft_strisnumber(const char *s);
 void	ft_strsfree(char **str);
