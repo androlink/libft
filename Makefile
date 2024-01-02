@@ -5,7 +5,8 @@ AR		=	ar -rcs
 RMF		=	rm -f
 RMD		=	rm -d
 
-CFLAGS	=	-Wall -Werror -Wextra
+CFLAGS	:= -Wall -Werror -Wextra
+
 DEPSFLAGS	=	-MMD -MP
 
 HDIR	=	includes
@@ -107,6 +108,8 @@ OBJS	=	$(OFILES:%=$(BDIR)/%)
 DEPSDIR		= build
 DEPS		= $(SFILES:%.c=$(DEPSDIR)/%.d)
 
+.PHONY	:	all	fclean	clean	re	debug
+
 all		:	$(NAME)
 
 $(NAME)	:	$(OBJS)
@@ -125,9 +128,7 @@ clean	:
 	$(RMF) $(OBJS) $(DEPS)
 
 re		:	fclean
-	$(MAKE) all
+	$(MAKE) all CFLAGS="$(CFLAGS)"
 
-debug	:
-	$(MAKE) re CFLAGS="-g3"
-
-.PHONY	:	all	fclean	clean	re	debug
+debug	:	CFLAGS += -g3
+debug	:	re
