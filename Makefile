@@ -10,9 +10,6 @@ CFLAGS	:= -Wall -Werror -Wextra
 DEPSFLAGS	=	-MMD -MP
 
 HDIR	=	includes
-HFILES	=	get_next_line.h	\
-			libft.h			\
-			libftprintf.h
 
 SDIR	=	srcs
 BDIR	=	build
@@ -91,6 +88,17 @@ NUMDIR			=	num
 NUMFILES		=	ft_atoi.c		\
 					ft_atol.c
 
+ARRDIR			=	arr
+ARRFILES		=	ft_arr_new.c		\
+					ft_arr_resize.c		\
+					ft_arr_clear.c		\
+					ft_arr_free.c		\
+					ft_arr_push.c		\
+					ft_arr_shift.c		\
+					ft_arr_unshift.c	\
+					ft_arr_map.c		\
+					ft_arr_pop.c
+
 SFILES	=	${addprefix $(LSTDIR)/, $(LSTFILES)}		\
 			${addprefix $(CHARDIR)/, $(CHARFILES)}		\
 			${addprefix $(STRDIR)/, $(STRFILES)}		\
@@ -98,6 +106,7 @@ SFILES	=	${addprefix $(LSTDIR)/, $(LSTFILES)}		\
 			${addprefix $(PUTDIR)/, $(PUTFILES)}		\
 			${addprefix $(GNLDIR)/, $(GNLFILES)}		\
 			${addprefix $(NUMDIR)/, $(NUMFILES)}		\
+			${addprefix $(ARRDIR)/, $(ARRFILES)}		\
 			${addprefix $(FTPRINTFDIR)/, $(FTPRINTFFILES)}
 
 SRCS	=	$(SFILES:%=$(SDIR)/%)
@@ -113,7 +122,7 @@ DEPS		= $(SFILES:%.c=$(DEPSDIR)/%.d)
 all		:	$(NAME)
 
 $(NAME)	:	$(OBJS)
-	$(AR) $(NAME) $(OBJS)
+	$(AR) $(NAME) $?
 
 -include $(DEPS)
 
