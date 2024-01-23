@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_arr_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: androlink <androlink@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:55:37 by androlink         #+#    #+#             */
-/*   Updated: 2024/01/04 17:16:47 by androlink        ###   ########.fr       */
+/*   Updated: 2024/01/21 19:00:16 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_array	*ft_arr_map(t_array *array, void *(*f)(void *), void (*del)(void *))
 	size_t	i;
 	void	*elem;
 
+	i = 0;
 	narr = ft_arr_new(array->capacity);
 	if (narr == NULL)
 		return (NULL);

@@ -3,67 +3,78 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: androlink <androlink@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 06:55:45 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/31 17:30:13 by androlink        ###   ########.fr       */
+/*   Updated: 2024/01/23 14:14:29 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int	is_empty(t_buffer *buf)
+static void	ft_cleanbuf(char *buf)
 {
-	return (buf->cursor == buf->end);
+	size_t	i;
+
+	i = 0;
+	while (i < BUFFER_SIZE && buf[i] != EOL && buf[i] != EOS)
+		i++;
+	ft_strncpy(buf, buf + i + (buf[i] == EOL), BUFFER_SIZE - i);
+	buf[BUFFER_SIZE - i] = EOS;
 }
 
-int	ft_linetostr(char **dest, t_buffer *buf)
+int	ft_linetostr(char **dest, char *buf)
 {
 	char	*str;
 	size_t	i;
-	size_t	j;
-	size_t	start;
+	size_t	j;	
 
+	i = 0;
 	j = 0;
 	if (*dest)
 		j = ft_strlen(*dest);
-	start = buf->cursor;
-	i = start;
-	while (i < (buf->end) && buf->buf[i] != EOL)
-		++i;
-	str = malloc(j + (i - start) + (buf->buf[i] == EOL) + 1);
+	while (i < (BUFFER_SIZE + 1) && buf[i] != EOL && buf[i] != EOS)
+		i++;
+	str = malloc(j + i + (buf[i] == EOL) + 1);
 	if (!str)
-		return (ft_nfree((void **)dest), -1);
+	{
+		free(*dest);
+		*dest = NULL;
+		return (-1);
+	}
 	ft_memcpy(str, *dest, j);
-	ft_memcpy(str + j, buf->buf + start, (buf->buf[i] == EOL) + i - start);
-	str[(i - start) + j + (buf->buf[i] == EOL)] = EOS;
+	ft_memcpy(str + j, buf, (buf[i] == EOL) + i);
+	str[i + j + (buf[i] == EOL)] = EOS;
 	free(*dest);
 	*dest = str;
-	buf->cursor = i + (buf->buf[i] == EOL);
-	return (buf->buf[i] == EOL);
+	return (buf[i] == EOL);
 }
 
 char	*get_next_line(int fd)
 {
-	static t_buffer	buf[FD_SIZE];
-	char			*str;
-	ssize_t			check;
+	static char	buf[FD_SIZE][BUFFER_SIZE + 1];
+	char		*str;
+	ssize_t		check;
 
-	check = 2;
+	check = 0;
 	str = NULL;
-	while ((check == 0 || check == 2) && fd != -1 && fd < FD_SIZE)
+	while (check == 0 && fd != -1 && fd < FD_SIZE)
 	{
-		if (check == 0 || is_empty(&buf[fd]))
+		ft_cleanbuf(buf[fd]);
+		if (buf[fd][0] == EOS)
 		{
-			check = read(fd, buf[fd].buf, BUFFER_SIZE);
+			check = read(fd, buf[fd], BUFFER_SIZE);
 			if (check == 0)
-				break ;
+				return (str);
 			if (check == -1)
-				return (free(str), NULL);
-			buf[fd].cursor = 0;
-			buf[fd].end = check;
+			{
+				if (str != NULL)
+					free(str);
+				return (NULL);
+			}
+			buf[fd][check] = '\0';
 		}
-		check = ft_linetostr(&str, &buf[fd]);
+		check = ft_linetostr(&str, buf[fd]);
 	}
 	return (str);
 }

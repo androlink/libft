@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arr.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: androlink <androlink@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 18:36:19 by androlink         #+#    #+#             */
-/*   Updated: 2024/01/04 17:17:08 by androlink        ###   ########.fr       */
+/*   Updated: 2024/01/21 19:09:42 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,5 @@ void	*ft_arr_pop(t_array *array);
 int		ft_arr_unshift(t_array *array, void *elem);
 void	*ft_arr_shift(t_array *array);
 t_array	*ft_arr_map(t_array *array, void *(*f)(void *), void (*del)(void *));
-//TODO	removeAt
-//TODO	dup
-//TODO	fromList
 
 #endif
