@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   num.h                                              :+:      :+:    :+:   */
+/*   ft_vec_get.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/17 19:51:40 by gcros             #+#    #+#             */
-/*   Updated: 2024/03/07 14:25:44 by gcros            ###   ########.fr       */
+/*   Created: 2024/02/03 19:19:35 by gcros             #+#    #+#             */
+/*   Updated: 2024/02/07 05:02:53 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef NUM_H
-# define NUM_H
+#include "vector.h"
+#include "mem.h"
 
-# include <limits.h>
-# include "str.h"
-
-int		ft_atoi(const char *nptr);
-long	ft_atol(const char *nptr);
-float	ft_maxf(float n1, float n2);
-float	ft_minf(float n1, float n2);
-float	ft_absf(float n);
-int		ft_abs(int n);
-int		ft_min(int n1, int n2);
-int		ft_max(int n1, int n2);
-
-#endif
+int	ft_vec_get(t_vector *vector, size_t index, void *out)
+{
+	if (index >= vector->size)
+		return (0);
+	ft_memcpy(out, vector->data + vector->elem_size * index, vector->elem_size);
+	return (1);
+}

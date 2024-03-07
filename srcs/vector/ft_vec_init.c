@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   num.h                                              :+:      :+:    :+:   */
+/*   ft_vec_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/17 19:51:40 by gcros             #+#    #+#             */
-/*   Updated: 2024/03/07 14:25:44 by gcros            ###   ########.fr       */
+/*   Created: 2024/02/03 18:24:08 by gcros             #+#    #+#             */
+/*   Updated: 2024/02/07 05:04:11 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef NUM_H
-# define NUM_H
+#include "vector.h"
+#include <stdlib.h>
 
-# include <limits.h>
-# include "str.h"
-
-int		ft_atoi(const char *nptr);
-long	ft_atol(const char *nptr);
-float	ft_maxf(float n1, float n2);
-float	ft_minf(float n1, float n2);
-float	ft_absf(float n);
-int		ft_abs(int n);
-int		ft_min(int n1, int n2);
-int		ft_max(int n1, int n2);
-
-#endif
+int	ft_vec_init(t_vector *vector, size_t elem_size)
+{
+	vector->data = malloc(0);
+	if (vector->data == NULL)
+		return (0);
+	vector->size = 0;
+	vector->elem_size = elem_size;
+	vector->capacity = 0;
+	return (1);
+}

@@ -86,7 +86,9 @@ FTPRINTFFILES	=	ft_printchar.c	\
 
 NUMDIR			=	num
 NUMFILES		=	ft_atoi.c		\
-					ft_atol.c
+					ft_atol.c		\
+					ft_min_max.c		\
+					ft_abs.c
 
 ARRDIR			=	arr
 ARRFILES		=	ft_arr_new.c		\
@@ -97,7 +99,18 @@ ARRFILES		=	ft_arr_new.c		\
 					ft_arr_shift.c		\
 					ft_arr_unshift.c	\
 					ft_arr_map.c		\
-					ft_arr_pop.c
+					ft_arr_pop.c		\
+					ft_arr_append.c
+
+VECDIR			=	vector
+VECFILES		=	ft_vec_append.c		\
+					ft_vec_clear.c		\
+					ft_vec_destroy.c	\
+					ft_vec_get.c		\
+					ft_vec_init.c		\
+					ft_vec_new.c		\
+					ft_vec_resize.c
+
 
 SFILES	=	${addprefix $(LSTDIR)/, $(LSTFILES)}		\
 			${addprefix $(CHARDIR)/, $(CHARFILES)}		\
@@ -107,6 +120,7 @@ SFILES	=	${addprefix $(LSTDIR)/, $(LSTFILES)}		\
 			${addprefix $(GNLDIR)/, $(GNLFILES)}		\
 			${addprefix $(NUMDIR)/, $(NUMFILES)}		\
 			${addprefix $(ARRDIR)/, $(ARRFILES)}		\
+			${addprefix $(VECDIR)/, $(VECFILES)}		\
 			${addprefix $(FTPRINTFDIR)/, $(FTPRINTFFILES)}
 
 SRCS	=	$(SFILES:%=$(SDIR)/%)

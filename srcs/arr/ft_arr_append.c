@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   num.h                                              :+:      :+:    :+:   */
+/*   ft_arr_append.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/17 19:51:40 by gcros             #+#    #+#             */
-/*   Updated: 2024/03/07 14:25:44 by gcros            ###   ########.fr       */
+/*   Created: 2024/02/08 02:57:26 by gcros             #+#    #+#             */
+/*   Updated: 2024/02/13 22:08:23 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef NUM_H
-# define NUM_H
+#include "arr.h"
 
-# include <limits.h>
-# include "str.h"
-
-int		ft_atoi(const char *nptr);
-long	ft_atol(const char *nptr);
-float	ft_maxf(float n1, float n2);
-float	ft_minf(float n1, float n2);
-float	ft_absf(float n);
-int		ft_abs(int n);
-int		ft_min(int n1, int n2);
-int		ft_max(int n1, int n2);
-
-#endif
+int	ft_arr_append(t_array *arr, void *elem)
+{
+	if (arr->size == arr->capacity)
+		if (ft_arr_resize(arr, arr->size + 20) == 0)
+			return (0);
+	arr->data[arr->size] = elem;
+	arr->size++;
+	return (1);
+}
