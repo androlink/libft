@@ -6,17 +6,13 @@
 
 ``` make -C libft/ ```
 
-### Make debug
-
-``` make -C libft/ debug```
-
 ### Compilation
 
-add thid line in your compilation command
-- ``` -L libft/ -l ft -I libft/includes/ ```
-  - `-L`	->	path to the lib
-  - `-l`	->	lib name
-  - `-I`	->	path for `.h`
+#### Library
+- ``` -L libft/ -l ft ```
+
+#### Include
+- ``` -I libft/includes/ ```
 
 ## All function
 
@@ -123,6 +119,20 @@ add thid line in your compilation command
 |	[get_next_line](./srcs/gnl/get_next_line.c)	|	char	*get_next_line(int fd);	|
 
 [arr.h](includes/arr.h)
+
+|	function	|	prototype 	|
+|	:---:	|	:---:	|
+|	[ft_arr_clear](srcs/arr/ft_arr_clear.c)		|	char	*ft_arr_clear(t_array *array, void (*del)(void *));						|
+|	[ft_arr_resize](srcs/arr/ft_arr_resize.c)	|	int		ft_arr_resize(t_array *array, size_t ncapacity);						|
+|	[ft_arr_new](srcs/arr/ft_arr_new.c)			|	t_array	*ft_arr_new(size_t capacity);											|
+|	[ft_arr_free](srcs/arr/ft_arr_free.c)		|	void	ft_arr_free(t_array **array, void (*del)(void *));						|
+|	[ft_arr_push](srcs/arr/ft_arr_push.c)		|	int		ft_arr_push(t_array *array, void *elem);								|
+|	[ft_arr_pop](srcs/arr/ft_arr_pop.c)			|	void	*ft_arr_pop(t_array *array);											|
+|	[ft_arr_unshift](srcs/arr/ft_arr_unshift.c)	|	int		ft_arr_unshift(t_array *array, void *elem);								|
+|	[ft_arr_shift](srcs/arr/ft_arr_shift.c)		|	void	*ft_arr_shift(t_array *array);											|
+|	[ft_arr_map](srcs/arr/ft_arr_map.c)			|	t_array	*ft_arr_map(t_array *array, void *(*f)(void *), void (*del)(void *));	|
+
+[vector.h](includes/arr.h)
 
 |	function	|	prototype 	|
 |	:---:	|	:---:	|
