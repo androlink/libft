@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vec_destroy.c                                   :+:      :+:    :+:   */
+/*   ft_memdump.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 16:55:27 by gcros             #+#    #+#             */
-/*   Updated: 2024/07/03 11:35:03 by gcros            ###   ########.fr       */
+/*   Created: 2024/05/14 16:22:22 by gcros             #+#    #+#             */
+/*   Updated: 2024/06/28 14:20:43 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
-#include <stdlib.h>
+#include "stddef.h"
+#include "unistd.h"
 
-void	ft_vec_destroy(t_vector *vector)
+void	print_v(unsigned char	byte)
 {
-	free(vector->data);
-	vector->data = NULL;
+	/* 0123456789abcdef */
+	char	p[2];
+
+	p[1] = "0123456789abcdef"[byte & 0XF];
+	p[0] = "0123456789abcdef"[(byte >> 4) & 0XF];
+	write(1, p, 2);
 }
 
-void	ft_vec_free(t_vector **vector)
+void	ft_memdump(void *p, size_t len)
 {
-	ft_vec_destroy(*vector);
-	free(*vector);
-	*vector = NULL;
+	size_t	i;
+
+	i = 0;
+	while (len--)
+	{
+		print_v(((unsigned char *)p)[i]);
+		if (len)
+			write(1, " ", 1);
+		i++;
+	}
+	write(1, "\n", 1);
 }
