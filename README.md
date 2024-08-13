@@ -4,15 +4,15 @@
 
 ### Make
 
-``` make -C libft/ ```
+``` make -C ${LIBFTDIR}/ ```
 
 ### Compilation
 
 #### Library
-- ``` -L libft/ -l ft ```
+- ``` -L ${LIBFTDIR}/ -l ft ```
 
 #### Include
-- ``` -I libft/includes/ ```
+- ``` -I ${LIBFTDIR}/includes/ ```
 
 ## All function
 
