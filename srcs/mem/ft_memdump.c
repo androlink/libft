@@ -6,16 +6,15 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 16:22:22 by gcros             #+#    #+#             */
-/*   Updated: 2024/06/28 14:20:43 by gcros            ###   ########.fr       */
+/*   Updated: 2024/08/13 15:50:52 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stddef.h"
 #include "unistd.h"
 
-void	print_v(unsigned char	byte)
+void	print_v(unsigned char byte)
 {
-	/* 0123456789abcdef */
 	char	p[2];
 
 	p[1] = "0123456789abcdef"[byte & 0XF];
