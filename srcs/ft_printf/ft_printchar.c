@@ -6,13 +6,13 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 01:32:29 by gcros             #+#    #+#             */
-/*   Updated: 2023/12/14 06:27:29 by gcros            ###   ########.fr       */
+/*   Updated: 2025/08/17 17:10:36 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_int.h"
 
-size_t	ft_printchar(int c)
+size_t	ft_printchar(int fd, int c)
 {
-	return (write(1, &c, 1));
+	return (write(fd, &c, 1));
 }
