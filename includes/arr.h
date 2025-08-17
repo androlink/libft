@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 18:36:19 by androlink         #+#    #+#             */
-/*   Updated: 2024/03/07 14:12:54 by gcros            ###   ########.fr       */
+/*   Updated: 2025/08/17 16:04:12 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define ARR_H
 
 # include <stdlib.h>
+# include "ft_err.h"
 # include "mem.h"
 
 typedef struct s_array

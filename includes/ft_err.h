@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vec_get.c                                       :+:      :+:    :+:   */
+/*   ft_err.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 19:19:35 by gcros             #+#    #+#             */
-/*   Updated: 2025/08/17 16:07:29 by gcros            ###   ########.fr       */
+/*   Created: 2025/08/17 15:54:48 by gcros             #+#    #+#             */
+/*   Updated: 2025/08/17 16:03:27 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
-#include "mem.h"
+#ifndef FT_ERR_H
+# define FT_ERR_H
 
-int	ft_vec_get(t_vector *vector, size_t index, void *out)
-{
-	if (index >= vector->size)
-		return (FT_FAIL);
-	ft_memcpy(out, vector->data + vector->elem_size * index, vector->elem_size);
-	return (FT_SUCCESS);
-}
+# define FT_FAIL 1
+# define FT_SUCCESS 0
+
+#endif

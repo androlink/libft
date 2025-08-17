@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:55:42 by androlink         #+#    #+#             */
-/*   Updated: 2024/01/24 22:45:28 by gcros            ###   ########.fr       */
+/*   Updated: 2025/08/17 16:05:00 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 int	ft_arr_unshift(t_array *array, void *elem)
 {
 	if (array->size == array->capacity)
-		return (0);
+		return (FT_FAIL);
 	array->size += 1;
 	ft_memmove(array->data + 1,
 		array->data,
 		(array->size - 1) * sizeof(void *));
 	array->data[0] = elem;
-	return (1);
+	return (FT_SUCCESS);
 }

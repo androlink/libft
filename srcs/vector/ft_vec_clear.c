@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 19:14:03 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/07 05:03:09 by gcros            ###   ########.fr       */
+/*   Updated: 2025/08/17 16:07:14 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 int	ft_vec_clear(t_vector *vector)
 {
 	vector->size = 0;
-	return (1);
+	return (FT_SUCCESS);
 }

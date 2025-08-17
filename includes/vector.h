@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 05:07:23 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/07 05:07:31 by gcros            ###   ########.fr       */
+/*   Updated: 2025/08/17 16:04:19 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define VECTOR_H
 
 # include <stddef.h>
+# include "ft_err.h"
 
 typedef struct s_vector
 {

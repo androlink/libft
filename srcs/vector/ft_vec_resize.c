@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:31:36 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/07 02:41:24 by gcros            ###   ########.fr       */
+/*   Updated: 2025/08/17 16:07:56 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_vec_resize(t_vector *vector, size_t	ncapacity)
 
 	ndata = malloc((ncapacity * vector->elem_size));
 	if (ndata == NULL)
-		return (0);
+		return (FT_FAIL);
 	len = ncapacity;
 	if (len > vector->size)
 		len = vector->size;
@@ -29,5 +29,5 @@ int	ft_vec_resize(t_vector *vector, size_t	ncapacity)
 	free(vector->data);
 	vector->data = ndata;
 	vector->capacity = ncapacity;
-	return (1);
+	return (FT_SUCCESS);
 }
